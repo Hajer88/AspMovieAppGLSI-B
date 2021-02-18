@@ -1,0 +1,14 @@
+﻿@model AspMovieAppGLSI_B.Models.MVVM.CustomerMovieVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.movie.Name</h2>
+
+    @foreach (var item in Model.customers)
+    {
+        <h2>@Html.ActionLink(item.Name,"Details","Customer", new {id=item.Id}, null)</h2>
+    }
+
+
