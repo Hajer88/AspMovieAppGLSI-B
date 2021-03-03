@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AspMovieAppGLSI_B.Models.Customer>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <th> Customer Name</th>
+            <th>DiscountRate</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(item.Name, "Details", "Customer", new { Id = item.Id }, null)</td>
+            <td>@item.membershiptype.DiscountRate</td>
+        </tr>
+         }
+
+           
+        </tbody>
+</table>
+

@@ -25,6 +25,7 @@ namespace AspMovieAppGLSI_B.Models
         {
         }
         public DbSet<Customer> customers { get; set; }
+        public DbSet<Membershiptype> membershiptypes { get; set; }
         public DbSet<Movie> movies { get; set; }
         public static ApplicationDbContext Create()
         {

@@ -12,5 +12,8 @@ namespace AspMovieAppGLSI_B.Models
         [Required]
         public string Name { get; set; }
         public bool SubscribedToNewsletter { get; set; }
+        public int membershiptypeId { get; set; }
+        public virtual Membershiptype membershiptype { get; set; }
+        public ICollection<Movie> movies { get; set; }
     }
 }

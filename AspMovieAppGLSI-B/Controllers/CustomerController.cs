@@ -2,6 +2,7 @@
 using AspMovieAppGLSI_B.Models.MVVM;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,6 +32,11 @@ namespace AspMovieAppGLSI_B.Controllers
         {
             var customer = _db.customers.SingleOrDefault(c => c.Id == id);
             return View(customer);
+        }
+        public ActionResult List()
+        {
+            var customers = _db.customers.Include(c=>c.membershiptype).ToList();
+            return View(customers);
         }
 
         private List<Customer> GetCustomers()
