@@ -5,4 +5,9 @@
 }
 
 <h2>@Model.Name</h2>
+<h2>@Model.membershiptype.DiscountRate</h2>
+@if(Model.DoB.HasValue)
+{
+    <h2>Date of birth : @Model.DoB.Value.ToString()</h2>
+}
 

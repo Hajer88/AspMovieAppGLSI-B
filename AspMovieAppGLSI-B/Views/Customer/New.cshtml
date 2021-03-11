@@ -1,0 +1,27 @@
+﻿@model AspMovieAppGLSI_B.Models.MVVM.membershipCustomerVM
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nouveau client</h2>
+@using (Html.BeginForm("Create", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.customer.Name)
+        @Html.TextBoxFor(m => m.customer.Name, new { @class = "form-control" });
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.customer.DoB)
+        @Html.TextBoxFor(m => m.customer.DoB, new { @class = "form-control" })
+    </div>
+    
+
+<div class="form-group">
+    @Html.LabelFor(m => m.customer.membershiptypeId)
+    @Html.DropDownListFor(m => m.customer.membershiptypeId, new SelectList(Model.membershiptypes, "Id", "Id"), "Select membership", new { @class = "form-control" })
+</div>
+@Html.HiddenFor(m=>m.customer.Id)
+<button type="submit" class="btn-primary">Save</button>
+}
+

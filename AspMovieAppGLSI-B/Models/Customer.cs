@@ -15,5 +15,7 @@ namespace AspMovieAppGLSI_B.Models
         public int membershiptypeId { get; set; }
         public virtual Membershiptype membershiptype { get; set; }
         public ICollection<Movie> movies { get; set; }
+        [Display(Name="Date of Birth")]
+        public DateTime? DoB { get; set; }
     }
 }

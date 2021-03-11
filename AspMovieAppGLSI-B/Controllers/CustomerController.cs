@@ -38,6 +38,44 @@ namespace AspMovieAppGLSI_B.Controllers
             var customers = _db.customers.Include(c=>c.membershiptype).ToList();
             return View(customers);
         }
+        public ActionResult New()
+        {
+            var member = _db.membershiptypes.ToList();
+            var customermembership = new membershipCustomerVM
+            {
+                membershiptypes=member,
+            };
+            return View(customermembership);
+        }
+        //HTTP-POST
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            if (customer.Id == 0)
+            {
+                _db.customers.Add(customer);
+            }
+            else
+            {
+                var custInDb = _db.customers.Single(c => c.Id == customer.Id);
+                custInDb.Name = customer.Name;
+                custInDb.DoB = customer.DoB;
+                custInDb.membershiptypeId = customer.membershiptypeId;
+            }
+            _db.SaveChanges();
+
+            return RedirectToAction("List","Customer");
+        }
+        public ActionResult Edit(int id)
+        {
+            var customer = _db.customers.SingleOrDefault(c => c.Id == id);
+            var viewmodel = new membershipCustomerVM
+            {
+                customer = customer,
+                membershiptypes = _db.membershiptypes.ToList(),
+            };
+            return View("New",viewmodel);
+        }
 
         private List<Customer> GetCustomers()
         {
